@@ -32,6 +32,7 @@ class ApplicationConfig:
                     'amp_iot.src.amp.server.Server': False
                 },
                 'factories': {
+
                     # lib
                     'amp_iot.src.lib.storage.Storage': 'InvokableFactory',
                     'amp_iot.src.lib.audio_map.AudioMap': 'InvokableFactory',
@@ -43,6 +44,7 @@ class ApplicationConfig:
                     'amp_iot.src.amp.server.Server1': 'amp_iot.src.lib.object_manager.factory.ConfigurableFactory',
                 },
                 'ConfigurableFactory': {
+
                     # controllers
                     'amp_iot.src.amp.controller.lcd.LcdController': ['amp_iot.src.amp.model.lcd.Lcd'],
                     'amp_iot.src.amp.controller.power.PowerController': [
@@ -53,7 +55,10 @@ class ApplicationConfig:
 
                     # models
                     'amp_iot.src.amp.model.lcd.Lcd': [],
-                    'amp_iot.src.amp.model.audio.Audio': ['amp_iot.src.amp.driver.preamp.Preamp', 'amp_iot.src.lib.audio_map.AudioMap'],
+                    'amp_iot.src.amp.model.audio.Audio': [
+                        'amp_iot.src.amp.driver.preamp.Preamp',
+                        'amp_iot.src.lib.audio_map.AudioMap'
+                    ],
 
                     # drivers
                     'amp_iot.src.amp.driver.preamp.Preamp': ['amp_iot.src.amp.driver.preamp_data.PreampData'],
