@@ -1,0 +1,57 @@
+{
+    "amp_server": {
+        "host": "localhost",
+        "port": 7001
+    },
+
+    "arduino_connection": {
+        "i2c_bus": 1
+    },
+    "peak_monitor": {
+        "sink_name": "alsa_output.pci-0000_00_1f.3.analog-stereo.monitor",
+        "meter_rate": 60,
+        "queue_size": 6
+    },
+    "amp_skil": {
+        "skil_port": 5119,
+        "use_self_ssl": 0,
+        "volume_step": 5
+    },
+    "light_server": {
+        "host_addr": "",
+        "port": 6007,
+        "buff_size": 1024
+    },
+    "audio_server": {
+        "host_addr": "",
+        "port": 7000,
+        "buff_size": 2048
+    },
+
+    "max_vol_step": 10,
+    "default_lights": 1,
+    "light_efect": {
+        "vumeter": 1,
+        "main_volume" : 10,
+        "treble": 11,
+        "bass": 12,
+        "middle": 13,
+        "slide": 14,
+        "random": 15,
+        "larson" :16,
+
+        "mopidy_set" : 80,
+
+        "powerOnMode": 90,
+        "powerOffMode":91,
+
+        "alexa_failure": 100,
+        "alexa_success": 101,
+        "alexa_recording_start": 102,
+        "alexa_recording_stop": 103,
+        "alexa_playback_start": 104,
+        "alexa_playback_stop": 105,
+        "alexa_processing_start": 106,
+        "alexa_processing_stop":107
+    }
+}
