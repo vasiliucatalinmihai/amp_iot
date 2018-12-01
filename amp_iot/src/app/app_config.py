@@ -6,7 +6,10 @@ class ApplicationConfig:
     def get_application_config():
         return {
             'router': {
-
+                'mopidy/audio_option': {
+                    'controller': 'amp_iot.src.app.controller.mopidy.MopidyController',
+                    'action': 'audio_option'
+                },
             },
             'object_manager': {
                 'alias': {
@@ -16,11 +19,24 @@ class ApplicationConfig:
 
                 },
                 'factories': {
+                    'amplifier_client': 'amp_iot.src.app.client_factory.ClientFactory',
+                    'application_client': 'amp_iot.src.app.client_factory.ClientFactory',
+
+                    # lib
                     'amp_iot.src.lib.storage.Storage': 'InvokableFactory',
-                    'amp_iot.src.lib.jsonsocket.Client': 'InvokableFactory',
+                    'amp_iot.src.lib.audio_map.AudioMap': 'InvokableFactory',
+
+                    # model
                 },
                 'ConfigurableFactory': {
-                    'amp_iot.src.app.amp_client.AmpClient': ['amp_iot.src.lib.storage.Storage', 'amp_iot.src.lib.jsonsocket.Client'],
+
+                    # controller
+                    'amp_iot.src.app.controller.mopidy.Mopidy': ['amp_iot.src.app.model.audio.Audio'],
+                    # model
+                    'amp_iot.src.app.model.audio.Audio': [
+                        'amp_iot.src.lib.audio_map.AudioMap',
+                        'amp_iot.src.app.amp_client.AmpClient'
+                    ],
 
                 }
             },

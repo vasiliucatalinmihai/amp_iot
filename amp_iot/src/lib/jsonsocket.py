@@ -2,7 +2,7 @@ import json
 import socket
 
 
-class Server(object):
+class AbstractServer(object):
     """
     A JSON socket server used to communicate with a JSON socket client. All the
     data is serialized in JSON. How to use it:
@@ -52,7 +52,7 @@ class Server(object):
             self.socket = None
 
 
-class Client(object):
+class AbstractClient(object):
     """
     A JSON socket client used to communicate with a JSON socket server. All the
     data is serialized in JSON. How to use it:

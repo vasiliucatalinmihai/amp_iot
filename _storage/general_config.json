@@ -1,7 +1,11 @@
 {
-    "amp_server": {
+    "amplifier_client": {
         "host": "localhost",
         "port": 7001
+    },
+    "application_client": {
+        "host": "localhost",
+        "port": 7003
     },
 
     "arduino_connection": {

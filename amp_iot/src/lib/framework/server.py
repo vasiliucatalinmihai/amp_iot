@@ -1,25 +1,28 @@
-from amp_iot.src.lib.jsonsocket import Server
+from amp_iot.src.lib.jsonsocket import AbstractServer
 from amp_iot.src.lib.framework.app import App
 
 import logging
 import threading
 
 
-class AmpServer:
+class Server:
 
-    USE_THREADING = 1
+    def __init__(
+            self,
+            application: App,
+            host,
+            port,
+            use_threading=1
+    ):
 
-    def __init__(self):
-
-        self.__application = App()
-        storage = self.__application.get_object_manager().get('amp_iot.src.lib.storage.Storage')
-
-        self._host = storage.get_config('amp_server')['host']
-        self._port = storage.get_config('amp_server')['port']
+        self.__application = application
+        self._host = host
+        self._port = port
+        self._use_threading = use_threading
 
         self._isAlive = False
 
-        if self.USE_THREADING:
+        if self._use_threading:
             self._listenThread = threading.Thread(target=self._listen, args=())
             logging.getLogger().setLevel(logging.ERROR)
             self._lock = threading.Lock()
@@ -27,7 +30,7 @@ class AmpServer:
     def start(self):
         self._isAlive = True
 
-        if self.USE_THREADING:
+        if self._use_threading:
             self._listenThread.daemon = True
             self._listenThread.start()
         else:
@@ -37,7 +40,7 @@ class AmpServer:
         self._isAlive = False
 
     def _listen_no_thread(self):
-        server = Server(self._host, self._port)
+        server = AbstractServer(self._host, self._port)
 
         while self._isAlive:
             server.accept()
@@ -50,7 +53,7 @@ class AmpServer:
         server.close()
 
     def _listen(self):
-        server = Server(self._host, self._port)
+        server = AbstractServer(self._host, self._port)
 
         while self._isAlive:
             self._lock.acquire()

@@ -26,12 +26,14 @@ class ApplicationConfig:
             },
             'object_manager': {
                 'alias': {
-                    'amp_server': 'amp_iot.src.amp.server.Server',
+
                 },
                 'singleton': {
-                    'amp_iot.src.amp.server.Server': False
+
                 },
                 'factories': {
+                    'amplifier_client': 'amp_iot.src.amp.client_factory.ClientFactory',
+                    'application_client': 'amp_iot.src.amp.client_factory.ClientFactory',
 
                     # lib
                     'amp_iot.src.lib.storage.Storage': 'InvokableFactory',
@@ -40,8 +42,6 @@ class ApplicationConfig:
                     # drivers
                     'amp_iot.src.amp.driver.power.Power': 'InvokableFactory',
                     'amp_iot.src.amp.driver.led_shifter.LedShifter': 'InvokableFactory',
-
-                    'amp_iot.src.amp.server.Server1': 'amp_iot.src.lib.object_manager.factory.ConfigurableFactory',
                 },
                 'ConfigurableFactory': {
 
@@ -58,6 +58,7 @@ class ApplicationConfig:
                     'amp_iot.src.amp.model.audio.Audio': [
                         'amp_iot.src.amp.driver.preamp.Preamp',
                         'amp_iot.src.lib.audio_map.AudioMap'
+
                     ],
 
                     # drivers
