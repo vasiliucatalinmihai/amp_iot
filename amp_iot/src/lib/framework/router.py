@@ -10,7 +10,7 @@ class Router:
         if 'data' not in request.keys():
             raise Exception('Data missing')
         if request['path'] not in self.routes.keys():
-            raise Exception('Undefined route')
+            raise Exception('Undefined route ' + request['path'])
 
     def get_controller(self, request):
         return self.routes[request['path']]['controller']

@@ -8,11 +8,18 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 
 class App:
-    # app_config = {}
-    #
-    # object_manager = ObjectManager(app_config['object_manager'])
-    # router = Router(app_config['router'])
-    # listener = Listener(app_config['listeners'])
+
+    APP_NAME = "none"
+
+    app_config = {
+        'object_manager': {},
+        'router': {},
+        'listeners': {},
+    }
+
+    object_manager = ObjectManager(app_config['object_manager'])
+    router = Router(app_config['router'])
+    listener = Listener(app_config['listeners'])
 
     @classmethod
     def get_router(cls) -> Router:
@@ -54,7 +61,7 @@ class App:
         try:
             cls.router.validate_request(request)
         except Exception as ex:
-            return str(ex)
+            return cls.APP_NAME + '---' + str(ex)
 
         controller_name = cls.router.get_controller(request)
         action_name = cls.router.get_action(request)
@@ -62,7 +69,7 @@ class App:
         try:
             controller = cls.object_manager.get(controller_name)
         except Exception as ex:
-            return str(ex)
+            return cls.APP_NAME + '---' + str(ex)
 
         if hasattr(controller, action_name) and callable(getattr(controller, action_name)):
             controller.set_params(cls.router.get_params(request))
@@ -71,7 +78,7 @@ class App:
             try:
                 response = action()
             except Exception as ex:
-                return str(ex)
+                return cls.APP_NAME + '---' + str(ex)
 
             return response
 

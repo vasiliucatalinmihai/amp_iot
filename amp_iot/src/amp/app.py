@@ -8,6 +8,8 @@ from amp_iot.src.amp.app_config import ApplicationConfig
 
 
 class AmpApp(App):
+    APP_NAME = 'amplifier'
+
     app_config = ApplicationConfig.get_application_config()
 
     object_manager = ObjectManager(app_config['object_manager'])

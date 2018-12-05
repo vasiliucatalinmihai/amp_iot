@@ -7,8 +7,8 @@ class Storage:
     AUTOLOAD_MODULES = 0
     AUTOSAVE = 1
 
-    _path_to_files = '/home/catalin/projects/python/amp_iot_v2/amp_iot/_storage/'
-    # _path_to_files = '/home/pi/amp/amp_iot/_storage/'
+    _path_to_files = '/home/catalin/projects/python/amp_iot/_storage/'
+    # _path_to_files = '/home/pi/amp_iot/_storage/'
     _general_config = 'general_config'
 
     _data = dict()

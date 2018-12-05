@@ -9,7 +9,7 @@ class Server:
 
     def __init__(
             self,
-            application: App,
+            application,
             host,
             port,
             use_threading=1

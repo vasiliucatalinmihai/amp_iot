@@ -411,7 +411,7 @@ class AudioMap:
                 'name': 'getCouplingMode',
                 'params': ()
             },
-            'setMute' : {
+            'setMute': {
                 'name': 'setMute',
                 'params': ['mute']
             },

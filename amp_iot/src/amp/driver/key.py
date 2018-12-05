@@ -2,8 +2,9 @@
 import RPi.GPIO as GPIO
 import threading
 from time import sleep
-from amp_iot.src.amp.driver.encoder import Encoder
 
+from amp_iot.src.amp.driver.encoder import Encoder
+from amp_iot.src.amp.app import AmpApp
 
 # key driver, include encoder
 class Key(Encoder):
@@ -21,6 +22,8 @@ class Key(Encoder):
         0: 'RELEASED',
         1: 'PRESSED'
     }
+
+    KEY_CHANGE_EVENT = 'key_change_event'
 
     def __init__(self):
         self._pin_key_map = {
@@ -75,8 +78,7 @@ class Key(Encoder):
 
     # listen thread, wait for key event and send it to listeners(app client +)
     def _dispatch(self, action_type, value):
-        print(action_type)
-        print(value)
+        AmpApp.dispatch(self.KEY_CHANGE_EVENT, {'action_type': action_type, 'value': value})
 
         return self
 

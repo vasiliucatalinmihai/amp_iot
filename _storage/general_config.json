@@ -1,7 +1,7 @@
 {
     "amplifier_client": {
         "host": "localhost",
-        "port": 7001
+        "port": 7023
     },
     "application_client": {
         "host": "localhost",
