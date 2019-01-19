@@ -1,11 +1,11 @@
-# import smbus as bus
+import smbus as bus
 from amp_iot.src.amp.driver.preamp_data import PreampData
-# import data
+from amp_iot.src.amp.driver.gpio_pins import GpioPins
 
 
 class Preamp:
 
-    # i2cBus = bus.SMBus(1)
+    i2cBus = bus.SMBus(GpioPins.I2C_BUS)
     _driverAddr = 0x44
     
     _addrMainSource     = 0   # 0b01000000 #
@@ -299,12 +299,16 @@ class Preamp:
     # value 0-5 5 = mute
     def setMainSource(self, value, save=1):
         value = self.limit(value, 5)
+        self.setSoftMute(1)
+
         self._DataMainSource = self.setBits(self._DataMainSource, value, 7, 0)
         self.write(self._addrMainSource, self._DataMainSource)
         self._MainSourceValue = value
         if save :
             self._preamp_data.set(self._keyDataMainSource, self._DataMainSource).save()
             self._preamp_data.set(self._keyMainSourceValue, value).save()
+
+        self.setSoftMute(0)
         return self
 
     def getMainSource(self):
@@ -315,12 +319,17 @@ class Preamp:
     # value 0-15 -- 0 to +15bB
     def setMainSourceGain(self, value, save=1):
         value = self.limit(value, 15)
+        self.setSoftMute(1)
+
         self._DataMainSource = self.setBits(self._DataMainSource, value, 15 , 3)
         self.write(self._addrMainSource, self._DataMainSource)
         self._MainSourceGain = value
         if save :
             self._preamp_data.set(self._keyMainSourceGain, value).save()
             self._preamp_data.set(self._keyDataMainSource, self._DataMainSource).save()
+
+        self.setSoftMute(0)
+
         return self
 
     def getMainSourceGain(self):
@@ -440,9 +449,11 @@ class Preamp:
 
 
     # SoftMute On/Off
-    # value 0-1 on/off
+    # value 1 - 0 on/off
     def setSoftMute(self, value, save=1):
         value = self.limit(value, 1)
+        value = not bool(value)  # value 0-1 on/off
+
         self._DataSoftMute = self.setBits(self._DataSoftMute, value, 1, 0)
         self.write(self._addrSoftMute, self._DataSoftMute)
         self._SoftMuteValue = value
@@ -456,9 +467,11 @@ class Preamp:
 
 
     # SoftMute On/Off == setSoftMute
-    # value 0-1 on/off
+    # value 1 - 0 on/off
     def setSoftMuteEnable(self, value, save=1):
         value = self.limit(value, 1)
+        value = not bool(value)  # value 0-1 on/off
+
         self._DataSoftMute = self.setBits(self._DataSoftMute, value, 1, 0)
         self.write(self._addrSoftMute, self._DataSoftMute)
         self._SoftMuteEnable = value
@@ -1048,5 +1061,5 @@ class Preamp:
     def saveAll(self):
         self._preamp_data.saveAll(self)
 
-    def __del__(self):
-        del self._spectrum
+    # def __del__(self):
+    #     del self._spectrum

@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
+from amp_iot.src.amp.driver.gpio_pins import GpioPins
+
 
 # shift register 74HC595
 class AbstractShifter:
@@ -16,7 +18,7 @@ class AbstractShifter:
         self._clock_pin = clock_pin
         self._setup_board()
         # data to send
-        self._data = 0
+        self._data = 0b00000000
 
     # set data to shifter
     # @param data int - data for shifter
@@ -36,8 +38,7 @@ class AbstractShifter:
     # * set a bit (1)
     # @param pos bit position
     def set_bit(self, pos):
-        if self._data:
-            self._data |= 1 << pos
+        self._data |= 1 << pos
         return self
 
     # * clear a bit (0)
@@ -53,6 +54,7 @@ class AbstractShifter:
         GPIO.output(self._data_pin, GPIO.LOW)
         GPIO.output(self._clock_pin, GPIO.LOW)
         for i in range(self._data_length):
+            # print(self._data & (1 << i))
             sleep(self.delay)
             GPIO.output(self._clock_pin, GPIO.LOW)
             if self._data & (1 << i):
@@ -68,7 +70,7 @@ class AbstractShifter:
     
     # * chip setup    
     def _setup_board(self):
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GpioPins.BOARD_MODE)
         GPIO.setup(self._data_pin, GPIO.OUT)
         GPIO.setup(self._clock_pin, GPIO.OUT)
         GPIO.setup(self._latch_pin, GPIO.OUT)

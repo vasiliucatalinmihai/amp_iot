@@ -10,6 +10,8 @@ logging.getLogger().setLevel(logging.DEBUG)
 class App:
 
     APP_NAME = "none"
+    USE_THREADS_FOR_DISPATCH = True
+
 
     app_config = {
         'object_manager': {},
@@ -35,6 +37,11 @@ class App:
 
     @classmethod
     def dispatch(cls, event, args):
+        if cls.USE_THREADS_FOR_DISPATCH:
+            cls.listener.dispatch(cls.get_object_manager(), event, args)
+
+            return
+
         listeners = cls.listener.get_listeners(event)
 
         if not listeners:

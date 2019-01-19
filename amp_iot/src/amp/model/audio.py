@@ -1,7 +1,8 @@
 
 from amp_iot.src.lib.audio_map import AudioMap
 from amp_iot.src.amp.driver.preamp import Preamp
-from amp_iot.src.amp.driver.led_shifter import LedShifter as LedDriver
+from amp_iot.src.amp.driver.power_led import PowerLed as LedDriver
+from amp_iot.src.amp.driver.amplifier import Amplifier as AmpDriver
 
 
 class Audio:
@@ -10,11 +11,13 @@ class Audio:
             self,
             preamp_driver: Preamp,
             audio_map: AudioMap,
-            led_driver: LedDriver
+            led_driver: LedDriver,
+            amp_driver: AmpDriver
     ):
         self._preamp_driver = preamp_driver
         self._audio_map = audio_map
         self._led_driver = led_driver
+        self._amp_driver = amp_driver
 
     def process_external_call(self, method_name, args):
 
@@ -26,7 +29,7 @@ class Audio:
         func = getattr(self._preamp_driver, function_map['name'])
         params = dict()
         for i in args:
-            params[function_map['params'][int(i)]] = args[i]
+            params[function_map['params'][int(i)]] = int(args[i])
 
         try:
             return_data = func(**params)
@@ -40,12 +43,8 @@ class Audio:
 
     def mute(self):
         self._preamp_driver.setSoftMuteEnable(1)
-        self._led_driver.set_mute_led_blue()
+        self._amp_driver.mute()
 
     def unmute(self):
         self._preamp_driver.setSoftMuteEnable(0)
-        self._led_driver.set_mute_led_off()
-
-
-    def method(self, event):
-        print(event.param1)
+        self._amp_driver.unmute()

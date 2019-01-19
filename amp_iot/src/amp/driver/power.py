@@ -1,14 +1,16 @@
 
 import RPi.GPIO as GPIO
 
+from amp_iot.src.amp.driver.gpio_pins import GpioPins
+
 
 class Power:
 
-    RELAY_AMP_POWER_PIN = 19
-    RELAY_ADDITIONAL_POWER_PIN = 26
+    RELAY_AMP_POWER_PIN = GpioPins.RELAY_AMP_POWER_PIN
+    RELAY_ADDITIONAL_POWER_PIN = GpioPins.RELAY_ADDITIONAL_POWER_PIN
 
     def __init__(self):
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GpioPins.BOARD_MODE)
         GPIO.setup(self.RELAY_AMP_POWER_PIN, GPIO.OUT)
         GPIO.setup(self.RELAY_ADDITIONAL_POWER_PIN, GPIO.OUT)
 
@@ -28,22 +30,22 @@ class Power:
         return self
 
     def amp_power_on(self):
-        GPIO.output(self.RELAY_AMP_POWER_PIN, GPIO.LOW)
-
-        return self
-
-    def amp_power_off(self):
         GPIO.output(self.RELAY_AMP_POWER_PIN, GPIO.HIGH)
 
         return self
 
+    def amp_power_off(self):
+        GPIO.output(self.RELAY_AMP_POWER_PIN, GPIO.LOW)
+
+        return self
+
     def additional_power_on(self):
-        GPIO.output(self.RELAY_ADDITIONAL_POWER_PIN, GPIO.LOW)
+        GPIO.output(self.RELAY_ADDITIONAL_POWER_PIN, GPIO.HIGH)
 
         return self
 
     def additional_power_off(self):
-        GPIO.output(self.RELAY_ADDITIONAL_POWER_PIN, GPIO.HIGH)
+        GPIO.output(self.RELAY_ADDITIONAL_POWER_PIN, GPIO.LOW)
 
         return self
 
