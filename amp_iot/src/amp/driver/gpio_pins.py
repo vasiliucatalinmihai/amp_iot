@@ -13,8 +13,10 @@ class GpioPins:
     ENCODER_A_PIN = 17
     ENCODER_B_PIN = 27
 
-    POWER_BTN_PIN = 7
-    MUTE_BTN_PIN = 12
+    BTN_0_PIN = 1
+    BTN_1_PIN = 1
+    BTN_2_PIN = 1
+    BTN_3_PIN = 1
     ENCODER_BTN_PIN = 22
 
     MCP3008_SPI_CLOCK_PIN = 11

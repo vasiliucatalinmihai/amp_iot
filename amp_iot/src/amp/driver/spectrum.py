@@ -49,7 +49,8 @@ class Spectrum:
             GPIO.output(self.CLOCK_BAND_PIN, GPIO.LOW)
             GPIO.output(self.CLOCK_BAND_PIN, GPIO.HIGH)
             time.sleep(0.0001)
-            self._data[key] = self._adc_driver.read_adc(self.ADC_CHANNEL)
+            # @todo add fft to get bands
+            self._data[key] = self._adc_driver.read(self.ADC_CHANNEL)
         time.sleep(0.01)
 
     def _thread_read(self):

@@ -1,7 +1,7 @@
 from amp_iot.src.lib.storage import Storage
 
 
-class PreampData:
+class Tda7419Data:
     
     def __init__(self, storage: Storage):
         self._data = {}

@@ -1,9 +1,9 @@
 import smbus as bus
-from amp_iot.src.amp.driver.preamp_data import PreampData
+from amp_iot.src.amp.driver.tda7419_data import Tda7419Data
 from amp_iot.src.amp.driver.gpio_pins import GpioPins
 
 
-class Preamp:
+class Tda7419:
 
     i2cBus = bus.SMBus(GpioPins.I2C_BUS)
     _driverAddr = 0x44
@@ -91,7 +91,7 @@ class Preamp:
     _keyChipClockSource         = 'keyChipClockSource'
     _keyCouplingMode            = 'keyCouplingMode'
 
-    def __init__(self, preamp_data: PreampData):
+    def __init__(self, preamp_data: Tda7419Data):
         self._preamp_data = preamp_data
         self.init()
 

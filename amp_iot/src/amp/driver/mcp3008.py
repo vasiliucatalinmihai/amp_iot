@@ -61,3 +61,6 @@ class Mcp3008:
 
         value >>= 1  # first bit is 'null' so drop it
         return value
+
+    def read(self, channel):
+        return self.read_adc(channel)

@@ -21,7 +21,6 @@ class LedStrip:
     color_order = neopixel.GRB
 
     _encoder_pixels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    _low_pixels = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
 
     _pixel_data = list()
     _last_pixel_data = list()
@@ -50,11 +49,6 @@ class LedStrip:
 
         return self
 
-    def set_low_pixel(self, pixel, r, g, b):
-        self._pixel_data[self._low_pixels[pixel]] = (r, g, b)
-
-        return self
-
     def flush(self, force=False):
         if force is False and (self._pixel_data == self._last_pixel_data):
             return self
@@ -70,15 +64,6 @@ class LedStrip:
     def set_encoder(self, data, flush=False):
         for pixel in range(0, 16):
             self._pixel_data[self._encoder_pixels[pixel]] = data[pixel]
-
-        if flush:
-            self.flush()
-
-        return self
-
-    def set_low(self, data, flush=False):
-        for pixel in range(0, 16):
-            self._pixel_data[self._low_pixels[15-pixel]] = data[pixel]
 
         if flush:
             self.flush()
