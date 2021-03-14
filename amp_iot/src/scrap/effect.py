@@ -4,8 +4,8 @@ import threading
 import random
 
 from amp_iot.src.lib.storage import Storage
-from amp_iot.src.amp.driver.led_strip import LedStrip
-from amp_iot.src.amp.driver.spectrum import Spectrum
+from amp_iot.src.driver import LedStrip
+from amp_iot.src.driver import Spectrum
 
 
 class LightEffect:

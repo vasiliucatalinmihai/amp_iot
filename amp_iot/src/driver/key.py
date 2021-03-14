@@ -5,9 +5,9 @@ from time import sleep
 import datetime
 import queue
 
-from amp_iot.src.amp.driver.encoder import Encoder
-from amp_iot.src.amp.app import AmpApp
-from amp_iot.src.amp.driver.gpio_pins import GpioPins
+from amp_iot.src.driver import Encoder
+from amp_iot.src.app import AmpApp
+from amp_iot.src.driver import GpioPins
 
 
 # key driver, include encoder

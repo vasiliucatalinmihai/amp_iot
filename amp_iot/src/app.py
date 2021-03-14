@@ -4,7 +4,7 @@ from amp_iot.src.lib.framework.router import Router
 from amp_iot.src.lib.framework.app import App
 from amp_iot.src.lib.framework.listener import Listener
 
-from amp_iot.src.amp.app_config import ApplicationConfig
+from amp_iot.src.app_config import ApplicationConfig
 
 
 class AmpApp(App):

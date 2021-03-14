@@ -1,6 +1,6 @@
 import smbus as bus
-from amp_iot.src.amp.driver.tda7419_data import Tda7419Data
-from amp_iot.src.amp.driver.gpio_pins import GpioPins
+from amp_iot.src.driver import Tda7419Data
+from amp_iot.src.driver import GpioPins
 
 
 class Tda7419:

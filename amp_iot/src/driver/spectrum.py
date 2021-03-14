@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO
 import threading
 import time
 
-from amp_iot.src.amp.driver.mcp3008 import Mcp3008
-from amp_iot.src.amp.driver.gpio_pins import GpioPins
+from amp_iot.src.driver.mcp3008 import Mcp3008
+from amp_iot.src.driver import GpioPins
 
 
 class Spectrum:

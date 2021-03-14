@@ -1,26 +1,26 @@
-from amp_iot.src.amp.driver.power_led import PowerLed
+from amp_iot.src.driver import PowerLed
 
 l=PowerLed()
 
 
-from amp_iot.src.amp.driver.key import Key
+from amp_iot.src.driver import Key
 
 k=Key()
 k.start()
 
 
 #
-from amp_iot.src.amp.main import AmplifierMain
+from amp_iot.src.main import AmplifierMain
 
 amp = AmplifierMain()
 
 amp.run()
 
-from amp_iot.src.amp.driver.power_led import PowerLed
+from amp_iot.src.driver import PowerLed
 p = PowerLed()
 p.set_red_on()
 
-from amp_iot.src.amp.driver.power import Power
+from amp_iot.src.driver import Power
 p=Power()
 
 

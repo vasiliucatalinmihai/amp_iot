@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import threading
 
-from amp_iot.src.amp.driver.gpio_pins import GpioPins
+from amp_iot.src.driver import GpioPins
 
 
 # rotary encoder implementation

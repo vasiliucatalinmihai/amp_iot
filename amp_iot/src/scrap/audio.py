@@ -1,9 +1,9 @@
 
 import time
 
-from amp_iot.src.amp.driver.key import Key
-from amp_iot.src.amp.driver.tda7419 import Preamp
-from amp_iot.src.amp.model.light.light import Light
+from amp_iot.src.driver import Key
+from amp_iot.src.driver import Preamp
+from amp_iot.src.model import Light
 from amp_iot.src.lib.storage import Storage
 
 

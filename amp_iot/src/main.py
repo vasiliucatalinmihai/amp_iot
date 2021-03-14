@@ -1,5 +1,5 @@
 
-from amp_iot.src.amp.app import AmpApp
+from amp_iot.src.app import AmpApp
 from amp_iot.src.lib.framework.server import Server
 
 
