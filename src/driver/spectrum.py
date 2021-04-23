@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import threading
 import time
 
-from src.driver import Mcp3008
+from src.driver.ads1110 import Ads1110
 from src.driver import GpioPins
 
 
@@ -12,7 +12,6 @@ class Spectrum:
     USE_THREAD = False
     DATA_LOCK = threading.Lock()
 
-    ADC_CHANNEL = 0
     CLOCK_BAND_PIN = GpioPins.SPECTRUM_CLOCK_BAND_PIN
 
     KEY_62_HZ = 0
@@ -23,7 +22,7 @@ class Spectrum:
     KEY_6_34_KHZ = 5
     KEY_15_KHZ = 6
 
-    def __init__(self, adc_driver: Mcp3008):
+    def __init__(self, adc_driver: Ads1110):
         self._adc_driver = adc_driver
 
         GPIO.setmode(GpioPins.BOARD_MODE)
@@ -49,8 +48,7 @@ class Spectrum:
             GPIO.output(self.CLOCK_BAND_PIN, GPIO.LOW)
             GPIO.output(self.CLOCK_BAND_PIN, GPIO.HIGH)
             time.sleep(0.0001)
-            # @todo add fft to get bands
-            self._data[key] = self._adc_driver.read(self.ADC_CHANNEL)
+            self._data[key] = self._adc_driver.read()
         time.sleep(0.01)
 
     def _thread_read(self):
