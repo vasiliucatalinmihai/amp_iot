@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
 import time
+
 from mopidy_json_client import MopidyClient
+
 
 def print_track_info(tl_track):
     track = tl_track.get('track') if tl_track else None

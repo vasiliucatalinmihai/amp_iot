@@ -1,8 +1,8 @@
 import logging
 
-from src.lib.framework import ObjectManager
-from src.lib.framework import Router
-from src.lib.framework import Listener
+from src.lib.framework.listener import Listener
+from src.lib.framework.object_manager import ObjectManager
+from src.lib.framework.router import Router
 
 logging.getLogger().setLevel(logging.DEBUG)
 

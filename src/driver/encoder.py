@@ -1,8 +1,8 @@
-import RPi.GPIO as GPIO
 import threading
 
-from src.driver import GpioPins
+import RPi.GPIO as GPIO
 
+from src.driver.gpio_pins import GpioPins
 
 # rotary encoder implementation
 class Encoder:

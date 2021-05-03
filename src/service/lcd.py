@@ -9,14 +9,11 @@ class lcd:
 
     VARIOUS_ACTION = 'smart_home_action'
 
-    _state = self.STAND_BY
-
-    _states = [
-        self.STAND_BY, self.LOADING, self.AUDIO_SETUP, self.PLAYING,
-        self.VARIOUS_ACTION
-    ]
-
     def __init__(self):
+        _states = [
+            self.STAND_BY, self.LOADING, self.AUDIO_SETUP, self.PLAYING,
+            self.VARIOUS_ACTION
+        ]
         self._state = self.STAND_BY
 
 

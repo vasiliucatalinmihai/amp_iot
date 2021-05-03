@@ -1,8 +1,7 @@
-from src.lib.jsonsocket import AbstractServer
-from src.lib.framework.app import App
-
 import logging
 import threading
+
+from src.lib.jsonsocket import AbstractServer
 
 
 class Server:

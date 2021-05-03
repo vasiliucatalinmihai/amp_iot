@@ -1,4 +1,4 @@
-from src.model import Model
+from src.model.audio import Model
 
 class Preamp(Model):
 

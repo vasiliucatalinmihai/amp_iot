@@ -1,6 +1,7 @@
 
-import RPi.GPIO as GPIO
 from time import sleep
+
+import RPi.GPIO as GPIO
 
 from src.driver import GpioPins
 

@@ -1,11 +1,11 @@
 
-import time
-import threading
 import random
+import threading
+import time
 
-from src.lib.storage import Storage
 from src.driver import LedStrip
 from src.driver import Spectrum
+from src.lib.storage import Storage
 
 
 class LightEffect:

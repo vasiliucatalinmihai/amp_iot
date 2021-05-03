@@ -1,9 +1,9 @@
 
 import smbus
-import time
+from src.driver.gpio_pins import GpioPins
 
 class Ads1110:
-    busPort = 4
+    busPort = GpioPins.I2C_BUS
     i2cAddress = 0x48
 
     def __init__(self):

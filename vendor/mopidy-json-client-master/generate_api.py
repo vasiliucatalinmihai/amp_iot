@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import sys
+
 from mopidy_json_client import SimpleClient
 
 

@@ -1,10 +1,9 @@
 #!/usr/bin/python
 from __future__ import unicode_literals, print_function
 
-import time
-import sys
 import json
-
+import sys
+import time
 from builtins import input
 
 from mopidy_json_client import MopidyClient

@@ -1,14 +1,13 @@
-import time
-import threading
 import logging
+import threading
+import time
 
 import websocket
 
 from . import __version__ as client_version
-from .mopidy_api import MopidyAPI, CoreController
-from .messages import RequestMessage, ResponseMessage
 from .listener import MopidyListener
-
+from .messages import RequestMessage, ResponseMessage
+from .mopidy_api import MopidyAPI, CoreController
 
 logger = logging.getLogger('mopidy_json_client')
 

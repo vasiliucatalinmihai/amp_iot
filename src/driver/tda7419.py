@@ -1,6 +1,7 @@
 import smbus as bus
-from src.driver import Tda7419Data
-from src.driver import GpioPins
+
+from src.driver.gpio_pins import GpioPins
+from src.driver.tda7419_data import Tda7419Data
 
 
 class Tda7419:

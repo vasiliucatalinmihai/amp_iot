@@ -1,4 +1,5 @@
 import logging
+
 from .mopidy_api import MopidyAPI
 
 logger = logging.getLogger(__name__)

@@ -1,4 +1,4 @@
-from src.model import Model
+from src.model.abstract import Model
 
 class Amp(Model):
 

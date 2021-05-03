@@ -1,10 +1,9 @@
 
 import time
 
-from src.driver import Key
-from src.driver import Preamp
-from src.model import Light
+from src.driver.key import Key
 from src.lib.storage import Storage
+from src.model import Light
 
 
 class KeyAudio:

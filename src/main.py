@@ -1,6 +1,6 @@
 
 from src.app import AmpApp
-from src.lib.framework import Server
+from src.lib.framework.server import Server
 
 
 class AmplifierMain:
@@ -9,20 +9,21 @@ class AmplifierMain:
         self._application = AmpApp
 
         self._object_manager = self._application.get_object_manager()
-        self._config = self._object_manager.get('amp_iot.src.lib.storage.Storage')
+        self._config = self._object_manager.get('src.lib.storage.Storage')
 
-        power_model = self._object_manager.get('amp_iot.src.amp.model.power.Power')
-        power_model.power_on(False)
+        # self._key_driver = self._object_manager.get('amp_iot.src.driver.key.Key')
+        #
+        # self._app_server = Server(
+        #     self._application,
+        #     self._config.get_config('amplifier_client')['host'],
+        #     self._config.get_config('amplifier_client')['port'],
+        #     True
+        # )
 
-        self._key_driver = self._object_manager.get('amp_iot.src.amp.driver.key.Key')
+        pre = self._object_manager.get('src.driver.tda7419_data.Tda7419Data')
+        spec = self._object_manager.get('src.driver.spectrum.Spectrum')
 
-        self._app_server = Server(
-            self._application,
-            self._config.get_config('amplifier_client')['host'],
-            self._config.get_config('amplifier_client')['port'],
-            True
-        )
 
-    def run(self):
-        self._app_server.start()
-        self._key_driver.start()
+    # def run(self):
+    #     self._app_server.start()
+    #     self._key_driver.start()

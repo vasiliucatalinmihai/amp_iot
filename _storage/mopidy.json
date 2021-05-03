@@ -1,13 +1,74 @@
 {
-  "lights_map" :
-  {
-    "MainVolume" : {
-      "name" : "main_volume",
-      "bar_min" : 0,
-      "bar_max" : 100
+  "lights_map": {
+    "MainVolume": {
+      "name": "main_volume",
+      "bar_min": 0,
+      "bar_max": 100
     },
-    "set" : {
-      "name" : "mopidy_set"
+    "set": {
+      "name": "mopidy_set"
     }
   }
+}
+
+{
+  "keySoftMuteTimeStep": 0,
+  "keyBassSoftStep": 0,
+  "keyMainSourceValue": 3,
+  "keyMiddleQFactor": 0,
+  "keyTrebleCenterFreq": 0,
+  "keyDataBass": 31,
+  "keyLoudnessFreq": 0,
+  "keyDataMainSource": 75,
+  "keySecondSourceGain": 0,
+  "keyDataSubSetup": 0,
+  "keyLoudnessValue": 0,
+  "keySubSetupCutFreq": 0,
+  "keySoftMuteValue": true,
+  "keySoftMuteEnable": true,
+  "keyDataMiddle": 16,
+  "keySecondSourceRearSource": 0,
+  "keyTrebleValue": 0,
+  "keyMixLevelValue": 0,
+  "keyDataMixLevel": 0,
+  "keyLRSpeaker": 90,
+  "keyDataSecondSource": 0,
+  "keySubSetupBassFreq": 0,
+  "keyLFSpeaker": 90,
+  "keyDataSoftMute": 1,
+  "keyMiddleSoftStep": 0,
+  "keyMixLevelLFS": 0,
+  "keySubSetupDcMode": 0,
+  "keySubSetupMiddleFreq": 0,
+  "keySoftMutePin": 0,
+  "keySoftMuteTime": 0,
+  "keyTrebleReferenceOutput": 0,
+  "keyMiddleValue": 0,
+  "keyRFSpeaker": 90,
+  "keyMixGain": 9,
+  "keySecondSourceValue": 0,
+  "keyRRSpeaker": 90,
+  "keyLoudnessSoftStep": 0,
+  "keyLoudnessBoost": 0,
+  "keyMixLevelEnable": 0,
+  "keyDataTreble": 16,
+  "keyDataLoudness": 0,
+  "keyMainVolume": 60,
+  "keyMainSourceGain": 9,
+  "keyBassValue": 15,
+  "keyBassQFactor": 0,
+  "keyMixLevelSubEnable": 0,
+  "keySubVolume": 9,
+  "keySubSetupSmooth": 0,
+  "keyMixLevelRFS": 0,
+  "keyVolumesSoftStep": 0,
+  "keyDataDriverSetup": 0,
+  "keyGainEffectForDso": 0,
+  "keySpectrumQFactor": 0,
+  "keySpectrumSource": 0,
+  "keySpectrumRun": 0,
+  "keyChipReset": 0,
+  "keyChipResetMode": 0,
+  "keyChipClockSource": 0,
+  "keyCouplingMode": 0
 }

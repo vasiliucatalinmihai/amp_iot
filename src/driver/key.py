@@ -1,13 +1,12 @@
 
-import RPi.GPIO as GPIO
-import threading
-from time import sleep
 import datetime
-import queue
+import threading
 
-from src.driver import Encoder
+import RPi.GPIO as GPIO
+
 from src.app import AmpApp
-from src.driver import GpioPins
+from src.driver.encoder import Encoder
+from src.driver.gpio_pins import GpioPins
 
 
 # key driver, include encoder
@@ -16,7 +15,6 @@ class Key(Encoder):
     BTN_0 = 'BTN_0'
     BTN_1 = 'BTN_1'
     BTN_2 = 'BTN_2'
-    BTN_3 = 'BTN_3'
     ENCODER_BTN = 'ENCODER_BTN'
 
     ENCODER_VALUE = 'ENCODER_VALUE'
@@ -25,13 +23,9 @@ class Key(Encoder):
     RELEASED = 'RELEASE'
     PRESSED = 'PRESSED'
 
-    _power_btn_pin = GpioPins.POWER_BTN_PIN
-    _mute_btn_pin = GpioPins.MUTE_BTN_PIN
-
     _btn_0_pin = GpioPins.BTN_0_PIN
     _btn_1_pin = GpioPins.BTN_1_PIN
     _btn_2_pin = GpioPins.BTN_2_PIN
-    _btn_3_pin = GpioPins.BTN_3_PIN
     _encoder_btn_pin = GpioPins.ENCODER_BTN_PIN
 
     KEY_CHANGE_EVENT = 'key_change_event'
@@ -41,7 +35,6 @@ class Key(Encoder):
             self._btn_0_pin: self.BTN_0,
             self._btn_1_pin: self.BTN_1,
             self._btn_2_pin: self.BTN_2,
-            self._btn_3_pin: self.BTN_3,
             self._encoder_btn_pin: self.ENCODER_BTN,
         }
 
@@ -55,7 +48,6 @@ class Key(Encoder):
             self.BTN_0:      '',
             self.BTN_1:      '',
             self.BTN_2:      '',
-            self.BTN_3:      '',
             self.ENCODER_BTN:   '',
         }
         self._key_changed = ''
@@ -66,13 +58,11 @@ class Key(Encoder):
         GPIO.setup(self._btn_0_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self._btn_1_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self._btn_2_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self._btn_3_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self._encoder_btn_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
         GPIO.add_event_detect(self._btn_0_pin, GPIO.BOTH, callback=self._process_key_press, bouncetime=50)
         GPIO.add_event_detect(self._btn_1_pin, GPIO.BOTH, callback=self._process_key_press, bouncetime=50)
         GPIO.add_event_detect(self._btn_2_pin, GPIO.BOTH, callback=self._process_key_press, bouncetime=50)
-        GPIO.add_event_detect(self._btn_3_pin, GPIO.BOTH, callback=self._process_key_press, bouncetime=50)
         GPIO.add_event_detect(self._encoder_btn_pin, GPIO.BOTH, callback=self._process_key_press, bouncetime=50)
 
         self._readThread = threading.Thread(target=self.read, args=())

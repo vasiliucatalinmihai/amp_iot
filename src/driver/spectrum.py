@@ -1,10 +1,11 @@
 
-import RPi.GPIO as GPIO
 import threading
 import time
 
+import RPi.GPIO as GPIO
+
 from src.driver.ads1110 import Ads1110
-from src.driver import GpioPins
+from src.driver.gpio_pins import GpioPins
 
 
 class Spectrum:
@@ -12,7 +13,7 @@ class Spectrum:
     USE_THREAD = False
     DATA_LOCK = threading.Lock()
 
-    CLOCK_BAND_PIN = GpioPins.SPECTRUM_CLOCK_BAND_PIN
+    CLOCK_BAND_PIN = GpioPins.SPECTRUM_SAIN_PIN
 
     KEY_62_HZ = 0
     KEY_157_HZ = 1

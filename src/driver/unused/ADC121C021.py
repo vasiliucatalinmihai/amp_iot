@@ -3,8 +3,9 @@
 # https://www.controleverything.com/content/Analog-Digital-Converters?sku=ADC121C021_I2CADC#tabs-0-product_tabset-2
 # http://www.ti.com/lit/ds/symlink/adc121c021.pdf
 
-import smbus
 import time
+
+import smbus
 
 
 class ADC121C021:

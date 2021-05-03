@@ -26,12 +26,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 import numbers
-import time
-import numpy as np
 
-import spidev
 import RPi.GPIO as GPIO
-
+import numpy as np
+import spidev
 
 __version__ = '0.0.3'
 

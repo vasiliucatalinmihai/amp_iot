@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
-from mopidy_json_client import MopidyClient
-from gpio_controls import RotaryEncoder, MomentarySwitch
 from time import sleep
+
+from gpio_controls import RotaryEncoder, MomentarySwitch
+from mopidy_json_client import MopidyClient
 
 
 class VolumeGPIO(object):

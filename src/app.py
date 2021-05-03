@@ -1,10 +1,9 @@
 
-from src.lib.framework import ObjectManager
-from src.lib.framework import Router
-from src.lib.framework.app import App
-from src.lib.framework import Listener
-
 from src.app_config import ApplicationConfig
+from src.lib.framework.app import App
+from src.lib.framework.listener import Listener
+from src.lib.framework.object_manager import ObjectManager
+from src.lib.framework.router import Router
 
 
 class AmpApp(App):

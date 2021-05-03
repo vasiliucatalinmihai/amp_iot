@@ -1,14 +1,16 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='amp_iot',
     version='',
-    packages=['', 'amp_iot', 'amp_iot.src', 'amp_iot.src.amp', 'amp_iot.src.amp.model', 'amp_iot.src.amp.model.key',
-              'amp_iot.src.amp.model.light', 'amp_iot.src.amp.driver', 'amp_iot.src.amp.controller', 'amp_iot.src.lib',
-              'amp_iot.src.lib.framework'],
+    packages=['src', 'src.lib', 'src.lib.framework', 'src.model', 'src.scrap', 'src.driver', 'src.driver.unused',
+              'src.service', 'src.controller', 'vendor', 'vendor.mopidy-json-client-master',
+              'vendor.mopidy-json-client-master.examples', 'vendor.mopidy-json-client-master.mopidy_json_client',
+              'vendor.mopidy-json-client-master.mopidy_json_client.methods_1_1',
+              'vendor.mopidy-json-client-master.mopidy_json_client.methods_2_0'],
     url='',
     license='',
     author='catalin',
-    author_email='',
+    author_email='asa',
     description=''
 )

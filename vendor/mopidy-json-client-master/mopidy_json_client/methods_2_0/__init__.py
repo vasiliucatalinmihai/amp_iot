@@ -1,9 +1,9 @@
-from .playback import PlaybackController
-from .tracklist import TracklistController
-from .mixer import MixerController
-from .library import LibraryController
-from .playlists import PlaylistsController
 from .history import HistoryController
+from .library import LibraryController
+from .mixer import MixerController
+from .playback import PlaybackController
+from .playlists import PlaylistsController
+from .tracklist import TracklistController
 
 _version_ = '2.0'
 
