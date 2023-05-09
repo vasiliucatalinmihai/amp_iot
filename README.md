@@ -1,3 +1,2 @@
 # amp_iot
-
-WORK IN PROGRESS !!!
+WIP / RIP :)
